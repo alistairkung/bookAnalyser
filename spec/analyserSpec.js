@@ -25,24 +25,6 @@ describe("analyser", function () {
     });
   });
 
-  describe("#setUniqueFrequencies", function (){
-    it("should create an array of unique frequencies", function (){
-      expect(analyser.uniqueFrequencies).toEqual([4,1,2])
-    })
-  })
-
-  describe("#setPrimeFrequencyMap", function(){
-    it("should create a hash table showing the primality of all unique frequencies", function (){
-      expect(analyser.primeArray).toEqual([1,2])
-    })
-  })
-
-  describe("#isFrequencyPrime", function (){
-    it("should compare each frequency value to the primeArray to return a boolean", function (){
-      expect(analyser._isFrequencyPrime(analyser.frequencies['one'])).toEqual(false)
-    })
-  })
-
   describe("#outputAnalysis", function (){
     it("should output each indvidual word and an associated frequency in JSON", function () {
       expect(analyser.outputAnalysis()).toEqual({

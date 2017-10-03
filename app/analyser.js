@@ -18,6 +18,9 @@ Analyser.prototype.load = function (bookPath) {
     .replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,"")
     .replace(/[\n]/g, ' ')
     .toLowerCase()
+  this._setWordFrequencies();
+  this._setUniqueFrequencies();
+  this._setPrimeFrequencyMap();
 };
 
 Analyser.prototype.outputAnalysis = function () {
@@ -32,17 +35,17 @@ Analyser.prototype._isFrequencyPrime = function (number) {
   return this.primeArray.includes(number)
 };
 
-Analyser.prototype.setWordFrequencies = function() {
+Analyser.prototype._setWordFrequencies = function() {
   this.wordCounter.count(this.book)
   this.frequencies = this.wordCounter.wordcount
 };
 
-Analyser.prototype.setUniqueFrequencies = function () {
+Analyser.prototype._setUniqueFrequencies = function () {
   var allFreq = this._values(this.frequencies)
   this.uniqueFrequencies = allFreq.filter(this._uniqueArrFilter)
 };
 
-Analyser.prototype.setPrimeFrequencyMap = function () {
+Analyser.prototype._setPrimeFrequencyMap = function () {
   var self = this
   this.uniqueFrequencies.forEach(function(f){
     if (self.primeChecker.isPrime(f) === true) {

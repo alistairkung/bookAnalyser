@@ -5,9 +5,6 @@ describe("analyser", function () {
   beforeEach(function () {
     analyser = new Analyser()
     analyser.load('spec/testbook.txt')
-    analyser.setWordFrequencies();
-    analyser.setUniqueFrequencies();
-    analyser.setPrimeFrequencyMap();
   });
 
   describe("#load", function () {

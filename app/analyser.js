@@ -23,9 +23,13 @@ Analyser.prototype.load = function (bookPath) {
 Analyser.prototype.outputAnalysis = function () {
   var result = {}
   for (var word in this.frequencies) {
-    result[[word]] = {frequency:this.frequencies[word]}
+    result[[word]] = {frequency:this.frequencies[word], prime:this._isFrequencyPrime(this.frequencies[word])}
   }
   return result
+};
+
+Analyser.prototype._isFrequencyPrime = function (number) {
+  return this.primeArray.includes(number)
 };
 
 Analyser.prototype.setWordFrequencies = function() {

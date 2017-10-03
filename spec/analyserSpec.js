@@ -7,6 +7,7 @@ describe("analyser", function () {
     analyser.load('spec/testbook.txt')
     analyser.setWordFrequencies();
     analyser.setUniqueFrequencies();
+    analyser.setPrimeFrequencyMap();
   });
 
   describe("#load", function () {
@@ -35,19 +36,24 @@ describe("analyser", function () {
 
   describe("#setPrimeFrequencyMap", function(){
     it("should create a hash table showing the primality of all unique frequencies", function (){
-      analyser.setPrimeFrequencyMap();
       expect(analyser.primeArray).toEqual([1,2])
+    })
+  })
+
+  describe("#isFrequencyPrime", function (){
+    it("should compare each frequency value to the primeArray to return a boolean", function (){
+      expect(analyser._isFrequencyPrime(analyser.frequencies['one'])).toEqual(false)
     })
   })
 
   describe("#outputAnalysis", function (){
     it("should output each indvidual word and an associated frequency in JSON", function () {
       expect(analyser.outputAnalysis()).toEqual({
-        "one":{frequency: 4},
-        "two":{frequency: 1},
-        "three":{frequency: 1},
-        "four":{frequency: 2},
-        "five":{frequency: 1}
+        "one":{frequency: 4, prime:false},
+        "two":{frequency: 1, prime:true},
+        "three":{frequency: 1, prime:true},
+        "four":{frequency: 2, prime:true},
+        "five":{frequency: 1, prime:true}
       })
     });
   });

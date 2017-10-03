@@ -3,6 +3,7 @@ var wordCounter = require('../app/wordCounter')
 function Analyser(){
   this.book = null
   this.wordCounter = new wordCounter
+  this.frequencies = null
 }
 
 Analyser.prototype.load = function (bookPath) {
@@ -10,14 +11,21 @@ Analyser.prototype.load = function (bookPath) {
   this.book = fs.readFileSync(bookPath)
     .toString('utf-8')
     .trim()
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+    .replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,"")
     .replace(/[\n]/g, ' ')
     .toLowerCase()
 };
 
-Analyser.prototype.displayWordFrequencies = function() {
+Analyser.prototype.setWordFrequencies = function() {
   this.wordCounter.count(this.book)
-  return this.wordCounter.wordcount
-}
+  this.frequencies = this.wordCounter.wordcount
+};
 
+Analyser.prototype.outputAnalysis = function () {
+  var result = {}
+  for (var word in this.frequencies) {
+    result[[word]] = {frequency:this.frequencies[word]}
+  }
+  return result
+}
 module.exports = Analyser;

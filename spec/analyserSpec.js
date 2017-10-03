@@ -6,13 +6,13 @@ describe("analyser", function () {
     analyser = new Analyser()
     analyser.load('spec/testbook.txt')
     analyser.setWordFrequencies();
-  })
+  });
 
   describe("#load", function () {
     it("should return a prepared string from the text file", function () {
       expect(analyser.book).toBe('one one one two three four four five')
-    })
-  })
+    });
+  });
 
   describe("#setWordFrequencies", function() {
     it("should create an object with each individual word appearing in the book and the frequency of occurences", function () {
@@ -23,8 +23,8 @@ describe("analyser", function () {
         four : 2,
         five : 1
       })
-    })
-  })
+    });
+  });
 
   describe("#outputAnalysis", function (){
     it("should output each indvidual word and an associated frequency in JSON", function () {
@@ -35,8 +35,8 @@ describe("analyser", function () {
         "four":{frequency: 2},
         "five":{frequency: 1}
       })
-    })
-  })
+    });
+  });
 
 
-})
+});

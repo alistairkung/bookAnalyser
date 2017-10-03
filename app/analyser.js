@@ -1,10 +1,13 @@
 var wordCounter = require('../app/wordCounter')
+var PrimeChecker = require('../app/primeChecker')
 
 function Analyser(){
   this.book = null
   this.wordCounter = new wordCounter
+  this.primeChecker = new PrimeChecker
   this.frequencies = null
   this.uniqueFrequencies = []
+  this.primeArray = []
 }
 
 Analyser.prototype.load = function (bookPath) {
@@ -17,6 +20,14 @@ Analyser.prototype.load = function (bookPath) {
     .toLowerCase()
 };
 
+Analyser.prototype.outputAnalysis = function () {
+  var result = {}
+  for (var word in this.frequencies) {
+    result[[word]] = {frequency:this.frequencies[word]}
+  }
+  return result
+};
+
 Analyser.prototype.setWordFrequencies = function() {
   this.wordCounter.count(this.book)
   this.frequencies = this.wordCounter.wordcount
@@ -27,12 +38,13 @@ Analyser.prototype.setUniqueFrequencies = function () {
   this.uniqueFrequencies = allFreq.filter(this._uniqueArrFilter)
 };
 
-Analyser.prototype.outputAnalysis = function () {
-  var result = {}
-  for (var word in this.frequencies) {
-    result[[word]] = {frequency:this.frequencies[word]}
-  }
-  return result
+Analyser.prototype.setPrimeFrequencyMap = function () {
+  var self = this
+  this.uniqueFrequencies.forEach(function(f){
+    if (self.primeChecker.isPrime(f) === true) {
+      self.primeArray.push(f)
+    };
+  });
 };
 
 Analyser.prototype._values = function(obj) {

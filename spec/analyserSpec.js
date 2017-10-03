@@ -6,18 +6,19 @@ describe("analyser", function () {
     analyser = new Analyser()
     analyser.load('spec/testbook.txt')
     analyser.setWordFrequencies();
+    analyser.setUniqueFrequencies();
   });
 
   describe("#load", function () {
     it("should return a prepared string from the text file", function () {
-      expect(analyser.book).toBe('one one one two three four four five')
+      expect(analyser.book).toBe('one one one two three four four five one')
     });
   });
 
   describe("#setWordFrequencies", function() {
     it("should create an object with each individual word appearing in the book and the frequency of occurences", function () {
       expect(analyser.frequencies).toEqual({
-        one : 3,
+        one : 4,
         two : 1,
         three : 1,
         four : 2,
@@ -28,15 +29,21 @@ describe("analyser", function () {
 
   describe("#setUniqueFrequencies", function (){
     it("should create an array of unique frequencies", function (){
-      analyser.setUniqueFrequencies();
-      expect(analyser.uniqueFrequencies).toEqual([3,1,2])
+      expect(analyser.uniqueFrequencies).toEqual([4,1,2])
+    })
+  })
+
+  describe("#setPrimeFrequencyMap", function(){
+    it("should create a hash table showing the primality of all unique frequencies", function (){
+      analyser.setPrimeFrequencyMap();
+      expect(analyser.primeArray).toEqual([1,2])
     })
   })
 
   describe("#outputAnalysis", function (){
     it("should output each indvidual word and an associated frequency in JSON", function () {
       expect(analyser.outputAnalysis()).toEqual({
-        "one":{frequency: 3},
+        "one":{frequency: 4},
         "two":{frequency: 1},
         "three":{frequency: 1},
         "four":{frequency: 2},

@@ -26,6 +26,13 @@ describe("analyser", function () {
     });
   });
 
+  describe("#setUniqueFrequencies", function (){
+    it("should create an array of unique frequencies", function (){
+      analyser.setUniqueFrequencies();
+      expect(analyser.uniqueFrequencies).toEqual([3,1,2])
+    })
+  })
+
   describe("#outputAnalysis", function (){
     it("should output each indvidual word and an associated frequency in JSON", function () {
       expect(analyser.outputAnalysis()).toEqual({
@@ -37,6 +44,4 @@ describe("analyser", function () {
       })
     });
   });
-
-
 });

@@ -7,6 +7,28 @@ A node app that analyses words in a book
 
 2. Also output whether the number of times each word appears is a prime number.
 
+## User Stories
+
+```
+So I may see how what words appear on a book
+I would like to be able to load a text file
+```
+
+```
+So I may see what words appear on a book
+I would like to output each unique word in a text file
+```
+
+```
+So I may see what the most common words are
+I would like to see the frequency of each word
+```
+
+```
+So I may identify prime numbers
+I would like to see whether each frequency is a prime number
+```
+
 ## How to Run
 
 ```
@@ -25,7 +47,7 @@ $ analyser.outputAnalysis()
 
 ![Example Run](./readme-img/examplerun.png)
 
-#### Tests
+## Tests
 
 This application was written following a strict TDD approach. To run the tests type the following into the terminal:
 
@@ -35,7 +57,7 @@ $ npm test
 
 ![Jasmine Tests](./readme-img/tests.png)
 
-#### Approach
+## Approach
 
 * TDD: Developed following TDD using Jasmine-node, religiously following the red, green refactor loop.
 
@@ -74,7 +96,7 @@ I decided not to merge these changes in the end. However there was quite a lot o
 Branch: array_of_unique_primes
 ```
 
-#### Reflections
+## Reflections
 
 * Having not previously used Node, there was a bit of a learning curve at the start to get up and running and I am happy that I got there in the end and learnt to use the module export pattern.
 * I spent a lot of time trying to implement an idea which I realised late on probably does not make my application more efficient (explained in above section). However the valuable lesson I took away is that it is important to think carefully before making changes to optimise an application. If I had though about scalability (i.e. a bigger book) earlier I probably would not have tried to implement my approach.

@@ -88,9 +88,9 @@ This is because I intend to expand this project into a node API and I would like
 
 * Creating an array of unique primes(Probably bad idea): I had an idea at one point that if I preprocessed the text file through the Analysis module, flattening all the frequencies into an array that contains only unique, prime frequencies, then my PrimeChecker method will run fewer times and hence be more efficient....
 
-It was only until I had finished implementing this that it struck me that the most time taxing aspect of the algorithm was the number of divisions not the number of times the method is called. I realised when I finished that this method scales poorly with longer books and would only make sense if the range of prime numbers is small and predictable. In this case, the bigger the book, the less predictable the prime numbers and hence, the simpler approach may make more sense.
+* It was only until I had finished implementing this that it struck me that the most time taxing aspect of the algorithm was the number of divisions not the number of times the method is called. I realised when I finished that this method scales poorly with longer books and would only make sense if the range of prime numbers is small and predictable. In this case, the bigger the book, the less predictable the prime numbers and hence, the simpler approach may make more sense.
 
-I decided not to merge these changes in the end. However there was quite a lot of code written to achieve this(part due to Javascript's lack of set theory but also that I didn't have enough time to refactor) so I left code on the following branch to be seen(It's also fully tested code!):
+* I decided not to merge these changes in the end. However there was quite a lot of code written to achieve this(part due to Javascript's lack of set theory but also that I didn't have enough time to refactor) so I left code on the following branch to be seen(It's also fully tested code!):
 
 ```
 Branch: array_of_unique_primes
@@ -99,6 +99,6 @@ Branch: array_of_unique_primes
 ## Reflections
 
 * Having not previously used Node, there was a bit of a learning curve at the start to get up and running and I am happy that I got there in the end and learnt to use the module export pattern.
-* I spent a lot of time trying to implement an idea which I realised late on probably does not make my application more efficient (explained in above section). However the valuable lesson I took away is that it is important to think carefully before making changes to optimise an application. If I had though about scalability (i.e. a bigger book) earlier I probably would not have tried to implement my approach.
+* I spent a lot of time trying to implement an idea which I realised late on probably does not make my application more efficient (explained in above section). However the valuable lesson I took away is that it is important to think carefully before making changes to optimise an application. If I had though about scalability (i.e. a bigger book) earlier I probably would not have tried to implement this approach and instead spent time improving the algorithm itself instead.
 * I did not have time to find a way to bench mark my two implementations(nor have I tried to do any benchmarking in the past), but I would be very curious to prove my new hypothesis that the simpler approach is faster.
 * I would like to have had more time to refactor and improve the general code quality, especially in the Analyser class. For example the load method has two responsibilities right now. It reads a text file but also sanitises the string to be usable by the wordCounter. The two responsibilities should be decoupled and extracted.

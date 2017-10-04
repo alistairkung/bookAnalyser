@@ -3,23 +3,23 @@ function wordCounter(){
 };
 
 wordCounter.prototype.count = function(sentence) {
-  var allWords = this._findAllWords(sentence)
-  this._countWords(allWords)
+  var allWords = this._findAllWords(sentence);
+  this._countWords(allWords);
 };
 
 wordCounter.prototype._findAllWords = function(string) {
-  return string.match(/\w+/g)
+  return string.match(/\w+/g);
 };
 
 wordCounter.prototype._countWords = function(arr) {
-  var frequencies = {}
+  var frequencies = {};
   arr.forEach(function(w){
     if (!frequencies[w]) {
       frequencies[w] = 0;
     }
     frequencies[w] += 1;
   });
-  this.wordcount = frequencies
+  this.wordcount = frequencies;
 };
 
 
